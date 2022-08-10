@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: usernames_policies
+    description: 'Associates a username to its policies, in an anonymous way'
+    columns:
+      - name: codpol
+        description: 'Policy identifier, also the primary key'
+        tests:
+          - not_null
+          - unique
+
+  - name: usernames_grouping
+    description: 'For each customer code, returns the total number of purchased policies'
+    columns:
+      - name: codsog
+        description: 'Customer identifier, also the primary key'
+        tests:
+          - not_null
+          - unique

@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: user_policies
+    description: 'Joins users and policies in a unified table'

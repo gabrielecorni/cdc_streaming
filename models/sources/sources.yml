@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: customer_data
+    schema: public
+    tables:
+      - name: customer_data_raw
+
+  - name: customer_views
+    schema: public
+    tables:
+      - name: users
+      - name: policies

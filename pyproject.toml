@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "cdc-streaming"
+version = "0.1.0"
+description = "Concept implementing a near real-time streaming architecture with postgres, dbt and Materialize."
+authors = ["Gabriele Corni <gabriele.corni@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+dbt-materialize = "^1.1.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
