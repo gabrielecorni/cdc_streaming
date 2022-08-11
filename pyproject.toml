@@ -7,6 +7,7 @@ authors = ["Gabriele Corni <gabriele.corni@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 dbt-materialize = "^1.1.2"
+diagrams = "^0.21.1"
 
 [tool.poetry.dev-dependencies]
 

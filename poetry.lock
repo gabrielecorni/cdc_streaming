@@ -157,12 +157,37 @@ dbt-core = "1.1.2"
 psycopg2-binary = ">=2.8,<3.0"
 
 [[package]]
+name = "diagrams"
+version = "0.21.1"
+description = "Diagram as Code"
+category = "main"
+optional = false
+python-versions = ">=3.6,<4.0"
+
+[package.dependencies]
+graphviz = ">=0.13.2,<0.20.0"
+jinja2 = ">=2.10,<4.0"
+
+[[package]]
 name = "future"
 version = "0.18.2"
 description = "Clean single-source support for Python 3 and 2"
 category = "main"
 optional = false
 python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+
+[[package]]
+name = "graphviz"
+version = "0.19.2"
+description = "Simple Python interface for Graphviz"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+dev = ["tox (>=3)", "flake8", "pep8-naming", "wheel", "twine"]
+docs = ["sphinx (>=1.8)", "sphinx-autodoc-typehints", "sphinx-rtd-theme"]
+test = ["pytest (>=6)", "pytest-mock (>=3)", "mock (>=4)", "pytest-cov", "coverage"]
 
 [[package]]
 name = "hologram"
@@ -495,7 +520,7 @@ watchdog = ["watchdog"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "9eb938a245fdffd9a430b10c20f25cf6e564d855480ca00e310db7f3211d7cc6"
+content-hash = "e3a6fe7e95c669dfcfba8938f2e1d02dfa03309cb36aeddd5fee4c524e78f43c"
 
 [metadata.files]
 agate = []
@@ -513,7 +538,9 @@ dbt-core = []
 dbt-extractor = []
 dbt-materialize = []
 dbt-postgres = []
+diagrams = []
 future = []
+graphviz = []
 hologram = []
 idna = [
     {file = "idna-3.3-py3-none-any.whl", hash = "sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff"},

@@ -1,6 +1,8 @@
 # cdc_streaming
 Concept implementing a near real-time streaming architecture with postgres, dbt and Materialize.
 
+![architecture_diagram](architecture_diagram.png)
+
 ## Setup
 
 ```bash
