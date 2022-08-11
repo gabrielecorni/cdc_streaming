@@ -23,47 +23,72 @@ poetry shell
 > Note: remember to update your `~/.dbt/profiles.yml` file as well.
 
 ## TL;DR
-Open 3 different shells at folder `cdc_streaming`, named: dbt, postgres, materialize
+```bash
+docker compose up -d    # start the system
+dbt run                 # execute dbt model
+< ... >                 # explore results
+docker compose down     # stop the system
+```
+## Example of execution
+Open 3 different shells at folder `cdc_streaming`, named `dbt`, `postgres`, `materialize`: 
++ (shell1) `dbt` -> `docker compose up -d`
++ (shell2) `postgres` -> `docker exec -it cdc_streaming-db-1 bash`
++ (shell3) `materialize` -> `docker run -it --rm --network=cdc_streaming_default materialize/cli`
 
-+ `$dbt> docker compose up -d`
-+ `$postgres> docker exec -it cdc_streaming-db-1 bash`
-+ `$materialize> docker run -it --rm --network=cdc_streaming_default materialize/cli`
-+ `$dbt> dbt run`
-+ `$postgres> (run some psql queries like)`
-    + `INSERT INTO ...`
-    + `UPDATE ...`
-    + `DELETE FROM ...`
-+ `$materialize> (run some psql queries like)`
-    + `\dv`
-    + `show sources;`
-    + `show views;`
-    + `show materialized views;`
-    + `select * from ...`
-+ `$dbt> docker compose down`
+Interact with the following CLI commands:
 
-## Example of interaction
+##### dbt shell
+run the dbt model (once):
+```bash
+dbt run
+```
 
-Within `postgres` shell (`docker exec -it cdc_streaming-db-1 bash`):
+##### postgres shell
+login to the `datalake` db:
+```bash
+psql -U postgres -d datalake
+```
 
-1. login to the `datalake` db (`psql -U postgres -d datalake`)
-2. execute the following SQL statements:
+execute the following SQL statements:
 ```bash
 datalake=# INSERT INTO SOURCE.USERS(ID, NAME, SURNAME) VALUES
-datalake-# (4, 'CAIO', 'MARIO');
+datalake-#      (4, 'CAIO', 'MARIO');
 INSERT 0 1
 datalake=# INSERT INTO SOURCE.POLICIES(ID, POLICY_DETAILS, USER_ID) VALUES
-datalake-# (5672, 'ANTI THEFT', 4),
-datalake-# (5559, 'MOTO INSURANCE', 4);
+datalake-#      (5672, 'ANTI THEFT', 4),
+datalake-#      (5559, 'MOTO INSURANCE', 4);
 INSERT 0 2
-datalake=# UPDATE SOURCE.POLICIES SET POLICY_DETAILS='HOME INSURANCE' WHERE ID = 5559;
+datalake=# UPDATE SOURCE.POLICIES SET POLICY_DETAILS='HOME INSURANCE' WHERE ID=5559;
 UPDATE 1
 datalake=# DELETE FROM SOURCE.POLICIES WHERE ID=5559;
 DELETE 1
 datalake=# DELETE FROM SOURCE.USERS WHERE ID=4;
 DELETE 1
 ```
+##### materialize shell
+while executing the above-mentioned queries on Postgres (source database), see how correspondent structures change on Materialize (target database).
+```bash
+# DISCOVERY operations
+\dv                                 # all views in db
+show sources;                       # all sources
+show views;                         # all views in dbt
+show materialized views;            # all materialized views in dbt
 
-The correspondent Kafka messages on topics are:
+# CRUD operations
+SELECT * FROM CUSTOMER_DATA_RAW;    # mixed source publication
+SELECT * FROM USERS;                # individual source view
+SELECT * FROM POLICIES;             # individual source view
+SELECT * FROM USER_POLICIES;        # staging model
+SELECT * FROM USERNAMES_POLICIES;   # data mart
+SELECT * FROM USERNAMES_GROUPING;   # data mart
+```
+
+##### kafka consumer
+within the project, two different kafka consumers have been made available:
++ [kowl](http://localhost:8081)
++ [kafka magic](http://localhost:8080)
+
+the correspondent kafka messages on topics are:
 + usernames_grouping
 ```json
 [
