@@ -3,6 +3,13 @@ Concept implementing a near real-time streaming architecture with postgres, dbt 
 
 ![architecture_diagram](architecture_diagram.png)
 
+## Tech stack
++ [dbt](https://www.getdbt.com) / [dbt-core](https://github.com/dbt-labs/dbt-core)
++ [Materialize](https://materialize.com)
++ [PostgreSQL](https://www.postgresql.org)
++ [Kafka](https://kafka.apache.org)
++ [diagrams](https://diagrams.mingrammer.com)
+
 ## Setup
 
 ```bash
