@@ -70,7 +70,7 @@ services:
   magic:
     image: "digitsy/kafka-magic"
     ports:
-      - "8080:80"
+      - "8082:80"
     volumes:
       - ./.appdata/magic-data:/config
     environment:

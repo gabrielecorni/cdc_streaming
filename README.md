@@ -38,9 +38,11 @@ Open 3 different shells at folder `cdc_streaming`, named `dbt`, `postgres`, `mat
 Interact with the following CLI commands:
 
 #### dbt shell
-run the dbt model (once):
+run the dbt model (once) and generate documentation:
 ```bash
-dbt run
+dbt run                 # build the model
+dbt docs generate       # build documentation
+dbt docs serve          # serve documentation
 ```
 
 #### postgres shell
@@ -86,7 +88,7 @@ SELECT * FROM USERNAMES_GROUPING;   # data mart
 #### kafka consumer
 within the project, two different kafka consumers have been made available:
 + [kowl](http://localhost:8081)
-+ [kafka magic](http://localhost:8080)
++ [kafka magic](http://localhost:8082)
 
 the correspondent kafka messages on topics are:
 + usernames_grouping
@@ -248,3 +250,6 @@ the correspondent kafka messages on topics are:
   }
 ]
 ```
+
+## Documentation
+The auto-generated, interactive documentation can be found at [localhost:8080](http://localhost:8080/#!/overview).
