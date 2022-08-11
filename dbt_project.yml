@@ -37,8 +37,8 @@ models:
     sources:
       +materialized: source
     staging:
-      +materialized: materializedview
-    marts:
       +materialized: view
+    marts:
+      +materialized: materializedview
     sinks:
       +materialized: sink
