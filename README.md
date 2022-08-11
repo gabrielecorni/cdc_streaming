@@ -262,3 +262,18 @@ the correspondent kafka messages on topics are:
 
 ## Documentation
 The auto-generated, interactive documentation can be found at [localhost:8080](http://localhost:8080/#!/overview).
+
+## Useful links
+These links helped me during the implementation of this project:
+#### dbt
++ [What, exactly, is dbt?](https://www.getdbt.com/blog/what-exactly-is-dbt/)
++ [Available dbt adapters](https://docs.getdbt.com/docs/available-adapters)
+#### dbt + Materialize
++ [Demos](https://github.com/MaterializeInc/demos)
++ [Available materializations](https://materialize.com/docs/integrations/dbt/#materializations)
++ [Create PostgreSQL source](https://materialize.com/docs/sql/create-source/postgres/)
++ [Create Kafka sinks](https://materialize.com/docs/sql/create-sink/)
+
+#### troubleshooting
++ [How to setup dbt for Materialize](https://www.entechlog.com/blog/data/how-to-setup-dbt-for-materialize-db/)
++ [Materialize: Unable to automatically determine a timestamp for your query](https://www.markhneedham.com/blog/2020/12/31/materialize-unable-automatically-determine-timestamp-query/)
