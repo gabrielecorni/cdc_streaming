@@ -9,6 +9,12 @@ models:
         tests:
           - not_null
           - unique
+      - name: codsog
+        description: 'Customer identifier'
+      - name: username
+        description: 'Customer username, to be used instead of personal details for anonymity reasons'
+      - name: policy_details
+        description: 'Policy description'
 
   - name: usernames_grouping
     description: 'For each customer code, returns the total number of purchased policies'
@@ -18,3 +24,5 @@ models:
         tests:
           - not_null
           - unique
+      - name: nb_policies
+        description: 'Number of policies owned by each customer'
