@@ -37,13 +37,13 @@ Open 3 different shells at folder `cdc_streaming`, named `dbt`, `postgres`, `mat
 
 Interact with the following CLI commands:
 
-##### dbt shell
+#### dbt shell
 run the dbt model (once):
 ```bash
 dbt run
 ```
 
-##### postgres shell
+#### postgres shell
 login to the `datalake` db:
 ```bash
 psql -U postgres -d datalake
@@ -65,7 +65,7 @@ DELETE 1
 datalake=# DELETE FROM SOURCE.USERS WHERE ID=4;
 DELETE 1
 ```
-##### materialize shell
+#### materialize shell
 while executing the above-mentioned queries on Postgres (source database), see how correspondent structures change on Materialize (target database).
 ```bash
 # DISCOVERY operations
@@ -83,7 +83,7 @@ SELECT * FROM USERNAMES_POLICIES;   # data mart
 SELECT * FROM USERNAMES_GROUPING;   # data mart
 ```
 
-##### kafka consumer
+#### kafka consumer
 within the project, two different kafka consumers have been made available:
 + [kowl](http://localhost:8081)
 + [kafka magic](http://localhost:8080)
