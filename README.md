@@ -4,10 +4,10 @@ Concept implementing a near real-time streaming architecture with postgres, dbt 
 ![architecture_diagram](architecture_diagram.png)
 
 ## Tech stack
-+ [dbt](https://www.getdbt.com) / [dbt-core](https://github.com/dbt-labs/dbt-core)
++ [dbt-core](https://github.com/dbt-labs/dbt-core) (cloud version: [dbt](https://www.getdbt.com))
 + [Materialize](https://materialize.com)
 + [PostgreSQL](https://www.postgresql.org)
-+ [Kafka](https://kafka.apache.org)
++ [Kafka](https://kafka.apache.org) (clients: [Kowl](https://cloudhut.dev) / [Kafka Magic](https://www.kafkamagic.com))
 + [diagrams](https://diagrams.mingrammer.com)
 
 ## Setup
