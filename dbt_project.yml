@@ -34,5 +34,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   cdc_streaming:
     # Config indicated by + and applies to all files under models/example/
-    example:
+    sources:
+      +materialized: source
+    staging:
+      +materialized: materializedview
+    marts:
       +materialized: view
+    sinks:
+      +materialized: sink
